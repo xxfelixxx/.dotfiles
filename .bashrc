@@ -84,6 +84,7 @@ LS_COLORS='rs=0:di=01;34:ln=01;36:mh=00:pi=40;33:so=01;35:do=01;35:bd=40;33;01:c
 export LS_COLORS
 
 # Thanks Adeel!
+mkdir -p ~/.emacs.d/eshell
 alias | sed -E "s/^alias ([^=]+)='(.*)'$/alias \1 \2 \$*/g; s/'\\\''/'/g;" >~/.emacs.d/eshell/alias
 
 export PATH="$HOME/.linuxbrew/bin:$PATH"

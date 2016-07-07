@@ -1,0 +1,45 @@
+[user]
+    name = Felix Tubiana
+    email = felixtubiana@gmail.com
+
+[alias]
+    b = branch -av
+    ci = commit -a
+    co = checkout
+    cp = cherry-pick
+    d = diff -b
+    dc = diff -b --cached
+    ds = diff -b --stat
+    l = log --graph --date-order --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>'
+    lol = log --graph --pretty=format:'%C(yellow)%h%Creset (%an) -%C(yellow)%d%Creset %s %Cgreen(%cr)%Creset' --abbrev-commit --date=relative
+    praise = blame
+    ps = log --pretty=oneline origin..master
+    s = status
+    st = status -a
+    stat = status
+    w = whatchanged -p
+    whois = "!sh -c 'git log -i -1 --pretty=\"format:%an <%ae>\n\" --author=\"$1\"' -"
+    wo = whatchanged -p origin..
+
+[apply]
+    whitespace = strip
+
+[diff]
+    rename = copy
+    renameLimit = 2500
+
+[pager]
+    color = true
+
+[color]
+    interactive = auto
+    branch = auto
+    diff = auto
+    status = auto
+
+[help]
+    autocorrect = 1
+[push]
+    default = matching
+[credential]
+    helper = cache --timeout=3600000

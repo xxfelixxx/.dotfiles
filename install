@@ -3,13 +3,13 @@
 source .colors
 
 DOT_FILES=(
-    .inputrc
-    .gitconfig
-    .gitignore
     .bashrc
+    .colors
     .emacs
     .emacs.felix.el
-    .colors
+    .gitconfig
+    .gitignore
+    .inputrc
 )
 
 NOW=$( date +%s )

@@ -1,0 +1,53 @@
+#!/bin/bash
+
+source .colors
+
+DOT_FILES=(
+    .inputrc
+    .gitconfig
+    .gitignore
+    .bashrc
+    .emacs
+    .emacs.felix.el
+    .colors
+)
+
+NOW=$( date +%s )
+
+for DOT_FILE in ${DOT_FILES[@]}; do
+    _install $DOT_FILE
+done
+
+IMAGES=(
+    felix.txt
+)
+
+IMAGE_DIR="$HOME/.felix"
+mkdir -p $IMAGE_DIR
+for IMAGE in ${IMAGES[@]}; do
+    cp .felix/$IMAGE $IMAGE_DIR
+done
+
+exit 0
+
+_install() {
+    DOT_FILE=$1
+    ORIGINAL="$HOME/$DOT_FILE"
+    if [ -f $ORIGINAL ]; then
+        SHA1_OLD=$( sha1sum $ORIGINAL | cut -f1 -d' ' )
+        SHA1_NEW=$( sha1sum $DOT_FILE | cut -f1 -d' ' )
+        if [ "$SHA1_OLD" == "$SHA1_NEW" ]; then
+            echo "$ORIGINAL is already the latest version"
+            return true
+        else
+            echo "Updating $ORIGINAL"
+            CMD="cp $ORIGINAL $ORIGINAL.$NOW"
+            echo $CMD
+            `CMD`
+        fi
+    fi
+
+    CMD="cp $DOT_FILE $ORIGINAL"
+    echo $CMD
+    `CMD`
+}

@@ -1,0 +1,38 @@
+#!/bin/bash
+
+source .colors
+
+_header() {
+    echo '--------------------------------------------------'
+}
+
+_test_command() {
+    COMMAND=$1
+    echo "$COMMAND"
+    echo -n "==> "
+    OUTPUT=`$COMMAND 2>&1 `
+    if [ $? -eq 0 ]; then
+        echo "[$GREEN OK $RESET]"
+    else
+        echo "[$RED FAIL $RESET]"
+        echo $OUTPUT
+        TEST_FAILURES=$(( $TEST_FAILURES + 1 ))
+    fi
+    _header
+    true
+}
+
+echo "Running Tests"
+_header
+
+TEST_FAILURES=0
+
+# Actual Tests
+_test_command "bash -x $HOME/.bashrc"
+_test_command "bash -x $HOME/.colors"
+_test_command "bash -x $HOME/.inputrc"
+_test_command "emacs --script $HOME/.emacs"
+_test_command "git config -l --file=$HOME/.gitconfig"
+
+exit $TEST_FAILURES
+

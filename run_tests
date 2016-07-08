@@ -32,6 +32,7 @@ _test_command "bash -x $HOME/.bashrc"
 _test_command "bash -x $HOME/.colors"
 _test_command "bash -x $HOME/.inputrc"
 _test_command "emacs --script $HOME/.emacs"
+_test_command "emacs --script $HOME/.emacs.felix.el"
 _test_command "git config -l --file=$HOME/.gitconfig"
 
 exit $TEST_FAILURES

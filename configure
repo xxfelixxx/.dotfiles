@@ -18,13 +18,13 @@ UNINSTALLED=()
 _check_if_installed() {
     COMMAND=$1
     LOC=$( which $1 )
-    echo -n $YELLOW
-    echo "Checking $COMMAND $RESET"
+    echo -n -e $YELLOW
+    echo -e "Checking $COMMAND $RESET"
     if [ -z $LOC ]; then
-        echo "==> $RED Need to install $COMMAND $RESET"
+        echo -e "==> $RED Need to install $COMMAND $RESET"
         UNINSTALLED+=( $COMMAND )
     else 
-        echo "==> installed [$GREEN $LOC $RESET ]"
+        echo -e "==> installed [$GREEN $LOC $RESET ]"
     fi
     true
 }

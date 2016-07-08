@@ -2,6 +2,7 @@ language: perl
 before_install:
   - sudo apt-get -qq update
   - sudo apt-get install -y emacs
+  - sudo apt-get install -y rlwrap
   - cpanm Perl::Tidy
   - cpanm Perl::Critic
 install:

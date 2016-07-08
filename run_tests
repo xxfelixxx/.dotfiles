@@ -22,7 +22,7 @@ _test_command() {
     true
 }
 
-echo "Running Tests"
+echo -e "${YELLOW}Running Tests$RESET"
 _header
 
 TEST_FAILURES=0

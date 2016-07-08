@@ -13,13 +13,13 @@ _install() {
             echo "Updating $ORIGINAL"
             CMD="cp $ORIGINAL $ORIGINAL.$NOW"
             echo $CMD
-            `CMD`
+            `$CMD`
         fi
     fi
 
     CMD="cp $DOT_FILE $ORIGINAL"
     echo $CMD
-    `CMD`
+    `$CMD`
 }
 
 source .colors

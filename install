@@ -10,7 +10,7 @@ _install() {
             echo "$ORIGINAL is already the latest version"
             return true
         else
-            echo "Updating $ORIGINAL"
+            echo -e "${YELLOW}Updating $ORIGINAL$RESET"
             CMD="cp $ORIGINAL $ORIGINAL.$NOW"
             echo $CMD
             `$CMD`
@@ -47,7 +47,9 @@ IMAGES=(
 IMAGE_DIR="$HOME/.felix"
 mkdir -p $IMAGE_DIR
 for IMAGE in ${IMAGES[@]}; do
-    cp .felix/$IMAGE $IMAGE_DIR
+    CMD="cp .felix/$IMAGE $IMAGE_DIR"
+    echo $CMD
+    `$CMD`
 done
 
 exit 0

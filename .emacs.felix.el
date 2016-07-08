@@ -64,7 +64,8 @@
     (perltidy-region)))
 
 ;; turn on mouse wheel
-(mouse-wheel-mode t)
+(if (>= emacs-major-version 24)
+    (mouse-wheel-mode t))
 
 ;; scp when editing remote files
 (setq tramp-default-method "ssh")

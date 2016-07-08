@@ -1,11 +1,8 @@
 .dotfiles
 =================
 
-###Dot Files
 [![Build Status](https://secure.travis-ci.org/xxfelixxx/.dotfiles.svg)](http://travis-ci.org/xxfelixxx/.dotfiles)
 
-Version
----------
 ###Version 0.1
 
 Features

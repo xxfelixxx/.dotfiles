@@ -221,3 +221,10 @@ one step, else indent 'correctly'"
               (comment-or-uncomment-region (line-beginning-position) (line-end-position))
             (comment-dwim arg)))
 (global-set-key "\M-;" 'comment-dwim-line)
+
+;; http://stackoverflow.com/questions/4987760/how-to-change-size-of-split-screen-emacs-windows
+;; http://stackoverflow.com/a/15186248/1799189
+(global-set-key (kbd "<C-up>") 'shrink-window)
+(global-set-key (kbd "<C-down>") 'enlarge-window)
+(global-set-key (kbd "<C-left>") 'shrink-window-horizontally)
+(global-set-key (kbd "<C-right>") 'enlarge-window-horizontally)

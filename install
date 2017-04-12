@@ -8,7 +8,7 @@ _install() {
         SHA1_NEW=$( sha1sum $DOT_FILE | cut -f1 -d' ' )
         if [ "$SHA1_OLD" == "$SHA1_NEW" ]; then
             echo "$ORIGINAL is already the latest version"
-            return true
+            return 1
         else
             echo -e "${YELLOW}Updating $ORIGINAL$RESET"
             CMD="cp $ORIGINAL $ORIGINAL.$NOW"

@@ -2,7 +2,6 @@
 
 source .colors
 
-# Check if installed
 COMMAND_LIST=(
     emacs
     cpan
@@ -10,7 +9,7 @@ COMMAND_LIST=(
     perl
     perlcritic
     perltidy
-    python
+    python3
     rlwrap
 )
 UNINSTALLED=()

@@ -14,4 +14,9 @@ Features
 
 ### Emacs - Auto-compiled .emacs for speedy startup
 
+Setup for Ubuntu
+-----------------
 
+    git clone https://github.com/xxfelixxx/.dotfiles
+    cd .dotfiles
+    ./setup_ubuntu

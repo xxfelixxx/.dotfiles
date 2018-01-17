@@ -51,4 +51,16 @@ for CPAN_PACKAGE in ${CPAN_PACKAGES[@]}; do
     cpan_install $CPAN_PACKAGE
 done
 
+header "Running ./configure"
+./configure
+
+header "Running ./install"
+./install
+
+header "Running ./run_tests"
+./run_tests
+
+header "Running ~/.bashrc"
+bash ~/.bashrc
+
 exit 0

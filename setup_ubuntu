@@ -1,0 +1,54 @@
+#!/bin/bash
+
+source .colors
+
+export PERL_MM_USE_DEFAULT=1
+
+SUDO=''
+if (( $EUID != 0 )); then
+    SUDO='sudo'
+fi
+
+APT_PACKAGES=(
+    emacs-nox
+    gcc
+    make
+    perl-doc
+    rlwrap
+)
+
+CPAN_PACKAGES=(
+    App::cpanminus
+    Perl::Critic
+    Perl::Tidy
+)
+
+header() {
+    NOTE=$1
+    echo "----$YELLOW $NOTE $RESET----"
+}
+
+apt_install() {
+    PACKAGE=$1
+    header "Installing $PACKAGE"
+    $SUDO apt-get install -y $PACKAGE
+}
+
+cpan_install() {
+    PACKAGE=$1
+    header "Installing $PACKAGE"
+    $SUDO cpan $PACKAGE
+}
+
+header "Running apt-get update"
+$SUDO apt-get update
+
+for APT_PACKAGE in ${APT_PACKAGES[@]}; do
+    apt_install $APT_PACKAGE
+done
+
+for CPAN_PACKAGE in ${CPAN_PACKAGES[@]}; do
+    cpan_install $CPAN_PACKAGE
+done
+
+exit 0

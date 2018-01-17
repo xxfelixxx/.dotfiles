@@ -2,8 +2,6 @@
 
 source .colors
 
-export PERL_MM_USE_DEFAULT=1
-
 SUDO=''
 if (( $EUID != 0 )); then
     SUDO='sudo'
@@ -37,7 +35,7 @@ apt_install() {
 cpan_install() {
     PACKAGE=$1
     header "Installing $PACKAGE"
-    $SUDO cpan $PACKAGE
+    $SUDO PERL_MM_USE_DEFAULT=1 cpan -i $PACKAGE
 }
 
 header "Running apt-get update"

@@ -7,8 +7,8 @@ if [ -f /etc/bashrc ]; then
 fi
 
 # felixthecat image
-if [ -f .felix/felix.txt ]; then
-        cat .felix/felix.txt
+if [ -f ~/.felix/felix.txt ]; then
+        cat ~/.felix/felix.txt
 fi
 
 # PS4 will output linenumbers when running a bash script as

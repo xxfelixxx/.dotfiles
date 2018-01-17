@@ -64,7 +64,7 @@
     (perltidy-region)))
 
 ;; turn on mouse wheel
-(if (>= emacs-major-version 24)
+(if (and (>= emacs-major-version 24) (window-system))
     (mouse-wheel-mode t))
 
 ;; scp when editing remote files

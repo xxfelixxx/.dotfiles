@@ -60,6 +60,7 @@ alias less='less -r'                          # raw control characters
 alias grep='grep --color'                     # show differences in colour
 alias egrep='egrep --color=auto'              # show differences in colour
 alias fgrep='fgrep --color=auto'              # show differences in colour
+alias fix='stty sane'                         # fix borked display, no clear
 
 alias e='emacs -nw --no-site-file'
 alias ls='ls --color=auto -B'

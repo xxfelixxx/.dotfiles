@@ -3,6 +3,7 @@
 source .colors
 
 COMMAND_LIST=(
+    colordiff
     emacs
     cpan
     cpanm

@@ -55,7 +55,7 @@ export HISTIGNORE=$'[ \t]*:&:[fb]g:exit:ls' # Ignore the ls command as well
 alias sqlplus='rlwrap -b "" -f $HOME/sql.dict /usr/lib/oracle/11.2/client64/bin/sqlplus'
 alias df='df -h'
 alias du='du -h'
-alias diff='/bin/colordiff'
+alias diff='/usr/bin/colordiff'
 alias less='less -r'                          # raw control characters
 alias grep='grep --color'                     # show differences in colour
 alias egrep='egrep --color=auto'              # show differences in colour

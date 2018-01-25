@@ -8,6 +8,7 @@ if (( $EUID != 0 )); then
 fi
 
 APT_PACKAGES=(
+    colordiff
     emacs-nox
     gcc
     make

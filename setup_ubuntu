@@ -62,4 +62,5 @@ header "Running ./run_tests"
 header "Running ~/.bashrc"
 bash ~/.bashrc
 
+echo "----$YELLOW SUCCESS!$GREEN Took $SECONDS seconds $RESET----"
 exit 0

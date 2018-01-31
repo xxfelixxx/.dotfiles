@@ -1,0 +1,78 @@
+#!/bin/bash
+
+source .colors
+
+SUDO=''
+if (( $EUID != 0 )); then
+    SUDO='sudo'
+fi
+
+YUM_PACKAGES=(
+    colordiff
+    emacs-nox
+    gcc
+    git
+    make
+    perl-App-cpanminus
+    perl-CPAN
+    perl-doc
+    python34
+    python34-setuptools
+    rlwrap
+)
+
+CPAN_PACKAGES=(
+    Env
+    Fatal
+    File::Which
+    File::HomeDir
+    Pod::Spell
+    Perl::Critic
+    Perl::Tidy
+)
+
+header() {
+    NOTE=$1
+    echo "----$YELLOW $NOTE $RESET----"
+}
+
+yum_install() {
+    PACKAGE=$1
+    header "Installing $PACKAGE"
+    $SUDO yum install -y $PACKAGE
+}
+
+cpan_install() {
+    PACKAGE=$1
+    header "Installing $PACKAGE"
+    $SUDO PERL_MM_USE_DEFAULT=1 cpan -i $PACKAGE
+}
+
+header "Installing epel-release"
+$SUDO yum install -y https://dl.fedoraproject.org/pub/epel/epel-release-latest-$(rpm -E '%{rhel}').noarch.rpm
+
+header "Running yum makecache"
+$SUDO yum makecache
+
+for YUM_PACKAGE in ${YUM_PACKAGES[@]}; do
+    yum_install $YUM_PACKAGE
+done
+
+for CPAN_PACKAGE in ${CPAN_PACKAGES[@]}; do
+    cpan_install $CPAN_PACKAGE
+done
+
+header "Running ./configure"
+./configure
+
+header "Running ./install"
+./install
+
+header "Running ./run_tests"
+./run_tests
+
+header "Running ~/.bashrc"
+bash ~/.bashrc
+
+echo "----$YELLOW SUCCESS!$GREEN Took $SECONDS seconds $RESET----"
+exit 0

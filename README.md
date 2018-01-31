@@ -20,3 +20,10 @@ Setup for Ubuntu
     git clone https://github.com/xxfelixxx/.dotfiles
     cd .dotfiles
     ./setup_ubuntu
+
+Setup for Redhat
+-----------------
+
+    curl https://raw.githubusercontent.com/xxfelixxx/.dotfiles/master/setup_redhat > setup_redhat
+    bash ./setup_redhat
+

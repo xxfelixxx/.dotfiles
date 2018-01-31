@@ -24,6 +24,7 @@ Setup for Ubuntu
 Setup for Redhat
 -----------------
 
-    curl https://raw.githubusercontent.com/xxfelixxx/.dotfiles/master/setup_redhat > setup_redhat
-    bash ./setup_redhat
-
+    sudo yum install git
+    git clone https://github.com/xxfelixxx/.dotfiles
+    cd .dotfiles
+    ./setup_redhat

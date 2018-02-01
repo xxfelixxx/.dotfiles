@@ -1,0 +1,52 @@
+source .colors
+
+SUDO=''
+if (( $EUID != 0 )); then
+    SUDO='sudo'
+fi
+
+header() {
+    NOTE=$1
+    echo "----$YELLOW $NOTE $RESET----"
+}
+
+apt_update() {
+    header "Running apt-get update"
+    $SUDO apt-get update
+}
+
+apt_install() {
+    PACKAGE=$1
+    header "Installing $PACKAGE"
+    $SUDO apt-get install -y $PACKAGE
+}
+
+yum_makecache() {
+    header "Running yum makecache"
+    $SUDO yum makecache
+}
+
+yum_install() {
+    PACKAGE=$1
+    header "Installing $PACKAGE"
+    $SUDO yum install -y $PACKAGE
+}
+
+yum_install_epel_release() {
+    header "Installing epel-release"
+    $SUDO yum install -y https://dl.fedoraproject.org/pub/epel/epel-release-latest-$(rpm -E '%{rhel}').noarch.rpm
+}
+
+cpan_install() {
+    PACKAGE=$1
+    header "Installing $PACKAGE"
+    $SUDO PERL_MM_USE_DEFAULT=1 cpan -i $PACKAGE
+}
+
+success() {
+    echo "----$YELLOW SUCCESS!$GREEN Took $SECONDS seconds $RESET----"
+}
+
+failure() {
+    echo "----$RED FAILURE!$GREEN Took $SECONDS seconds $RESET----"
+}

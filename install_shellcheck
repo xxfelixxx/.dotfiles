@@ -1,0 +1,32 @@
+#!/bin/bash
+
+source ./bash_install_functions
+
+header "Downloading Latest ShellCheck"
+SHELL_CHECK_DOWNLOAD="https://storage.googleapis.com/shellcheck"
+SHELL_CHECK_TAR="shellcheck-latest.linux.x86_64.tar"
+SHELL_CHECK_TAR_XZ="shellcheck-latest.linux.x86_64.tar.xz"
+SHELL_CHECK_INSTALL="/usr/local/bin/shellcheck"
+if curl "$SHELL_CHECK_DOWNLOAD/$SHELL_CHECK_TAR_XZ" > /tmp/$SHELL_CHECK_TAR_XZ; then
+    header "Decompressing ShellCheck with XZ"
+    xz --decompress --force /tmp/$SHELL_CHECK_TAR_XZ
+    header "Unpacking ShellCheck with tar"
+    tar -xvf /tmp/$SHELL_CHECK_TAR -C /tmp/
+    header "Copying ShellCheck to $SHELL_CHECK_INSTALL"
+    $SUDO cp /tmp/shellcheck-latest/shellcheck $SHELL_CHECK_INSTALL
+    header "Removing ShellCheck /tmp files"
+    rm -rf /tmp/$SHELL_CHECK_TAR /tmp/shellcheck-latest
+fi
+
+SHELL_CHECK_WIKI="https://raw.githubusercontent.com/xxfelixxx/shellcheckwiki/master/shellcheckwiki"
+SHELL_CHECK_WIKI_INSTALL="/usr/local/bin/shellcheckwiki"
+header "Downloading Latest ShellCheckWiki"
+if curl "$SHELL_CHECK_WIKI" > /tmp/shellcheckwiki; then
+    header "Copying ShellCheck Wiki to $SHELL_CHECK_WIKI_INSTALL"
+    $SUDO cp /tmp/shellcheckwiki $SHELL_CHECK_WIKI_INSTALL
+    $SUDO chmod 755 $SHELL_CHECK_WIKI_INSTALL
+    header "Removing ShellCheckWiki /tmp files"
+    rm -f /tmp/shellcheckwiki
+    header "Testing ShellCheckWiki"
+    $SHELL_CHECK_WIKI_INSTALL
+fi

@@ -1,0 +1,15 @@
+#!/bin/bash
+
+source ./bash_install_functions
+
+header "Running ./configure"
+./configure
+
+header "Running ./install"
+./install
+
+header "Running ./run_tests"
+./run_tests
+
+header "Running ~/.bashrc"
+bash ~/.bashrc

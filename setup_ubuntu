@@ -1,16 +1,12 @@
 #!/bin/bash
 
-source .colors
-
-SUDO=''
-if (( $EUID != 0 )); then
-    SUDO='sudo'
-fi
+source bash_install_functions
 
 APT_PACKAGES=(
     colordiff
     emacs-nox
     gcc
+    libssl-dev
     make
     perl-doc
     rlwrap
@@ -19,29 +15,14 @@ APT_PACKAGES=(
 
 CPAN_PACKAGES=(
     App::cpanminus
+    LWP::Protocol::https
     Perl::Critic
     Perl::Tidy
+    Term::ANSIColor
+    WWW::Mechanize
 )
 
-header() {
-    NOTE=$1
-    echo "----$YELLOW $NOTE $RESET----"
-}
-
-apt_install() {
-    PACKAGE=$1
-    header "Installing $PACKAGE"
-    $SUDO apt-get install -y $PACKAGE
-}
-
-cpan_install() {
-    PACKAGE=$1
-    header "Installing $PACKAGE"
-    $SUDO PERL_MM_USE_DEFAULT=1 cpan -i $PACKAGE
-}
-
-header "Running apt-get update"
-$SUDO apt-get update
+apt_update
 
 for APT_PACKAGE in ${APT_PACKAGES[@]}; do
     apt_install $APT_PACKAGE
@@ -51,17 +32,9 @@ for CPAN_PACKAGE in ${CPAN_PACKAGES[@]}; do
     cpan_install $CPAN_PACKAGE
 done
 
-header "Running ./configure"
-./configure
+./install_shellcheck
+./run_all
 
-header "Running ./install"
-./install
+success
 
-header "Running ./run_tests"
-./run_tests
-
-header "Running ~/.bashrc"
-bash ~/.bashrc
-
-echo "----$YELLOW SUCCESS!$GREEN Took $SECONDS seconds $RESET----"
 exit 0

@@ -65,7 +65,7 @@ alias fix='stty sane'                         # fix borked display, no clear
 alias e='emacs -nw --no-site-file'
 alias ls='ls --color=auto -B'
 
-FANCY_PROMPT="$GREEN\u$YELLOW@\h:$PURPLE\w$BLUE$ $RESET"
+FANCY_PROMPT="$GREEN\u$YELLOW@\h:$PURPLE\w$BLUE$ $CYAN$RESET"
 
 _prompt_command() {
     # Show   red x if last command failed

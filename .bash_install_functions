@@ -5,6 +5,26 @@ if (( $EUID != 0 )); then
     SUDO='sudo'
 fi
 
+is_debian() {
+    if [[ -f /etc/debian_version ]]; then
+        version=$(cat /etc/debian_version)
+        header "$version"
+        return 1
+    else
+        return 0
+    fi
+}
+
+is_redhat() {
+    if [[ -f /etc/redhat-release ]]; then
+        version=$(cat /etc/redhat-release)
+        header "$version"
+        return 1
+    else
+        return 0
+    fi
+}
+
 header() {
     NOTE=$1
     echo "----$YELLOW $NOTE $RESET----"

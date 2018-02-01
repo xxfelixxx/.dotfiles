@@ -16,6 +16,7 @@ fi
 
 # some functions
 if [ -f ~/.bash_install_functions ]; then
+    # shellcheck disable=SC1090 # Don't follow
     . ~/.bash_install_functions
 fi
 
@@ -75,11 +76,11 @@ alias ls='ls --color=auto -B'
 
 BIOS_VERSION=$(sudo dmidecode -s system-version 2>/dev/null)
 VM=""
-if echo $BIOS_VERSION | grep -q amazon; then
+if echo "$BIOS_VERSION" | grep -q amazon; then
     VM="[ec2]"
 fi
 
-FANCY_PROMPT="$GREEN\\u$YELLOW@\\h$BLUE$VM:$PURPLE\\w$BLUE$ $RESET"
+FANCY_PROMPT="$GREEN\\u$YELLOW@\\h$BLUE$VM:$PURPLE\\w$BLUE$ $CYAN$RESET"
 
 _prompt_command() {
     # Show   red x if last command failed

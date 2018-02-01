@@ -9,9 +9,9 @@ is_debian() {
     if [[ -f /etc/debian_version ]]; then
         version=$(cat /etc/debian_version)
         header "$version"
-        return 1
-    else
         return 0
+    else
+        return 1
     fi
 }
 
@@ -19,15 +19,20 @@ is_redhat() {
     if [[ -f /etc/redhat-release ]]; then
         version=$(cat /etc/redhat-release)
         header "$version"
-        return 1
-    else
         return 0
+    else
+        return 1
     fi
 }
 
 header() {
     NOTE=$1
     echo "----$YELLOW $NOTE $RESET----"
+}
+
+warning() {
+    NOTE=$1
+    echo "----$RED $NOTE $RESET----"
 }
 
 apt_update() {

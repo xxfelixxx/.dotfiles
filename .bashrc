@@ -1,3 +1,6 @@
+# shellcheck disable=SC1091 # Don't follow
+# shellcheck disable=SC2148 # Add a shebang.
+
 # If not running interactively, don't do anything
 [[ "$-" != *i* ]] && return
 
@@ -27,13 +30,13 @@ PURPLE_0=$( tput setaf 5)
 CYAN_0=$(   tput setaf 6)
 RESET_0=$(  tput sgr0   )
 
-RED="\[$RED_0\]"
-GREEN="\[$GREEN_0\]"
-YELLOW="\[$YELLOW_0\]"
-BLUE="\[$BLUE_0\]"
-PURPLE="\[$PURPLE_0\]"
-CYAN="\[$CYAN_0\]"
-RESET="\[$RESET_0\]"
+RED="\\[$RED_0\\]"
+GREEN="\\[$GREEN_0\\]"
+YELLOW="\\[$YELLOW_0\\]"
+BLUE="\\[$BLUE_0\\]"
+PURPLE="\\[$PURPLE_0\\]"
+CYAN="\\[$CYAN_0\\]"
+RESET="\\[$RESET_0\\]"
 
 CHECK="${GREEN}o"
 CROSS="${RED}x"
@@ -65,7 +68,7 @@ alias fix='stty sane'                         # fix borked display, no clear
 alias e='emacs -nw --no-site-file'
 alias ls='ls --color=auto -B'
 
-FANCY_PROMPT="$GREEN\u$YELLOW@\h:$PURPLE\w$BLUE$ $CYAN$RESET"
+FANCY_PROMPT="$GREEN\\u$YELLOW@\\h:$PURPLE\\w$BLUE$ $CYAN$RESET"
 
 _prompt_command() {
     # Show   red x if last command failed
@@ -86,12 +89,14 @@ export LS_COLORS
 
 # Thanks Adeel!
 mkdir -p ~/.emacs.d/eshell
+# shellcheck disable=SC1117
 alias | sed -E "s/^alias ([^=]+)='(.*)'$/alias \1 \2 \$*/g; s/'\\\''/'/g;" >~/.emacs.d/eshell/alias
 
 export PATH="$HOME/.linuxbrew/bin:$PATH"
 export LD_LIBRARY_PATH="$HOME/.linuxbrew/lib"
 
-PERL_MB_OPT="--install_base \"$HOME/perl5\""; export PERL_MB_OPT;
+MB_OPT=(--install_base "$HOME/perl5")
+PERL_MB_OPT="${MB_OPT[*]}"; export PERL_MB_OPT;
 PERL_MM_OPT="INSTALL_BASE=$HOME/perl5"; export PERL_MM_OPT;
 
 # colorize man pages

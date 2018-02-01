@@ -9,6 +9,7 @@ before_install:
 install:
   - ./configure
   - ./install
+  - ./install_shellcheck
 script:
   - ./run_tests
 env:

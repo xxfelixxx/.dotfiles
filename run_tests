@@ -29,6 +29,10 @@ _bash_test() {
     _test_command "shellcheck -e SC2148 $DOT_FILE"
 }
 
+echo -e "${BLUE}ShellCheck Version$RESET"
+shellcheck -V
+_header
+
 echo -e "${YELLOW}Running Tests$RESET"
 _header
 

@@ -1,6 +1,6 @@
 #!/bin/bash
 
-source ./bash_install_functions
+source .bash_install_functions
 
 header "Downloading Latest ShellCheck"
 SHELL_CHECK_DOWNLOAD="https://storage.googleapis.com/shellcheck"

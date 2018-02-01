@@ -14,6 +14,11 @@ if [ -f ~/.felix/felix.txt ]; then
         cat ~/.felix/felix.txt
 fi
 
+# some functions
+if [ -f ~/.bash_install_functions ]; then
+    . ~/.bash_install_functions
+fi
+
 # PS4 will output linenumbers when running a bash script as
 # bash -x foo.sh
 export PS4='+(${BASH_SOURCE}:${LINENO}): ${FUNCNAME[0]:+${FUNCNAME[0]}(): }'
@@ -68,7 +73,13 @@ alias fix='stty sane'                         # fix borked display, no clear
 alias e='emacs -nw --no-site-file'
 alias ls='ls --color=auto -B'
 
-FANCY_PROMPT="$GREEN\\u$YELLOW@\\h:$PURPLE\\w$BLUE$ $CYAN$RESET"
+BIOS_VERSION=$(sudo dmidecode -s system-version 2>/dev/null)
+VM=""
+if echo $BIOS_VERSION | grep -q amazon; then
+    VM="[ec2]"
+fi
+
+FANCY_PROMPT="$GREEN\\u$YELLOW@\\h$BLUE$VM:$PURPLE\\w$BLUE$ $RESET"
 
 _prompt_command() {
     # Show   red x if last command failed
@@ -107,3 +118,4 @@ export LESS_TERMCAP_se=$'\E[0m'
 export LESS_TERMCAP_so=$'\E[01;44;33m'
 export LESS_TERMCAP_ue=$'\E[0m'
 export LESS_TERMCAP_us=$'\E[01;32m'
+

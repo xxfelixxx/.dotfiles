@@ -26,6 +26,7 @@ source .colors
 
 DOT_FILES=(
     .bashrc
+    .bash_install_functions
     .colors
     .emacs
     .emacs.felix.el

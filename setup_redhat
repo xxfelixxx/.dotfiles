@@ -19,7 +19,6 @@ YUM_PACKAGES=(
     python34
     python34-setuptools
     rlwrap
-    ShellCheck
 )
 
 CPAN_PACKAGES=(
@@ -62,6 +61,22 @@ done
 for CPAN_PACKAGE in ${CPAN_PACKAGES[@]}; do
     cpan_install $CPAN_PACKAGE
 done
+
+header "Downloading Latest ShellCheck"
+SHELL_CHECK_DOWNLOAD="https://storage.googleapis.com/shellcheck"
+SHELL_CHECK_TAR="shellcheck-latest.linux.x86_64.tar"
+SHELL_CHECK_TAR_XZ="shellcheck-latest.linux.x86_64.tar.xz"
+SHELL_CHECK_INSTALL="/usr/local/bin/shellcheck"
+if curl "$SHELL_CHECK_DOWNLOAD/$SHELL_CHECK_TAR_XZ" > /tmp/$SHELL_CHECK_TAR_XZ; then
+    header "Decompressing ShellCheck with XZ"
+    xz --decompress --force /tmp/$SHELL_CHECK_TAR_XZ
+    header "Unpacking ShellCheck with tar"
+    tar -xvf /tmp/$SHELL_CHECK_TAR -C /tmp/
+    header "Copying ShellCheck to $SHELL_CHECK_INSTALL"
+    $SUDO cp /tmp/shellcheck-latest/shellcheck $SHELL_CHECK_INSTALL
+    header "Removing ShellCheck /tmp files"
+    rm -rf /tmp/$SHELL_CHECK_TAR /tmp/shellcheck-latest
+fi
 
 header "Running ./configure"
 ./configure

@@ -22,15 +22,22 @@ _test_command() {
     true
 }
 
+_bash_test() {
+    DOT_FILE=$1
+    _test_command "bash -x $DOT_FILE"
+    # Not Applicable ----------> SC2148: Shebang (#!) missing. Assuming Bash.
+    _test_command "shellcheck -e SC2148 $DOT_FILE"
+}
+
 echo -e "${YELLOW}Running Tests$RESET"
 _header
 
 TEST_FAILURES=0
 
 # Actual Tests
-_test_command "bash -x $HOME/.bashrc"
-_test_command "bash -x $HOME/.colors"
-_test_command "bash -x $HOME/.inputrc"
+_bash_test $HOME/.bashrc
+_bash_test $HOME/.colors
+_bash_test $HOME/.inputrc
 _test_command "emacs --script $HOME/.emacs"
 _test_command "emacs --script $HOME/.emacs.felix.el"
 _test_command "git config -l --file=$HOME/.gitconfig"

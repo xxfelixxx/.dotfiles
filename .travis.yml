@@ -4,8 +4,11 @@ before_install:
   - sudo apt-get install emacs
   - sudo apt-get install -y rlwrap
   - sudo apt-get install -y colordiff  
+  - sudo apt-get install -y libssl-dev
   - cpanm Perl::Tidy
   - cpanm Perl::Critic
+  - cpanm Term::ANSIColor
+  - cpanm WWW::Mechanize  
 install:
   - ./configure
   - ./install

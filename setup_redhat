@@ -2,7 +2,7 @@
 
 source .bash_install_functions
 
-if [[ ! is_redhat ]]; then
+if ! is_redhat; then
     warning "Not Redhat!"
     exit 1
 fi

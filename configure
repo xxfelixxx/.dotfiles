@@ -3,7 +3,7 @@
 source .colors
 
 COMMAND_LIST=(
-    asciinema
+#    asciinema  # Travis has difficulty with older repos...
     colordiff
     emacs
     cpan

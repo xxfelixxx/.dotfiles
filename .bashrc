@@ -65,11 +65,11 @@ alias sqlplus='rlwrap -b "" -f $HOME/sql.dict /usr/lib/oracle/11.2/client64/bin/
 alias df='df -h'
 alias du='du -h'
 alias diff='/usr/bin/colordiff'
-alias less='less -r'                          # raw control characters
-alias grep='grep --color'                     # show differences in colour
-alias egrep='egrep --color=auto'              # show differences in colour
-alias fgrep='fgrep --color=auto'              # show differences in colour
-alias fix='stty sane'                         # fix borked display, no clear
+alias less='less -r'                           # raw control characters
+alias grep='grep --color --exclude=\*~'        # show differences in colour
+alias egrep='egrep --color=auto --exclude=\*~' # show differences in colour
+alias fgrep='fgrep --color=auto --exclude=\*~' # show differences in colour
+alias fix='stty sane'                          # fix borked display, no clear
 
 alias e='emacs -nw --no-site-file'
 alias ls='ls --color=auto -B'

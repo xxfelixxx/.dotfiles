@@ -20,6 +20,7 @@ APT_PACKAGES=(
 
 CPAN_PACKAGES=(
     App::cpanminus
+    App::ShellCheckWiki
     LWP::Protocol::https
     Perl::Critic
     Perl::Tidy

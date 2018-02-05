@@ -23,6 +23,7 @@ YUM_PACKAGES=(
 )
 
 CPAN_PACKAGES=(
+    App::ShellCheckWiki
     Env
     Fatal
     File::HomeDir

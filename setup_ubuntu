@@ -20,12 +20,6 @@ APT_PACKAGES=(
 
 CPAN_PACKAGES=(
     App::cpanminus
-    App::ShellCheckWiki
-    LWP::Protocol::https
-    Perl::Critic
-    Perl::Tidy
-    Term::ANSIColor
-    WWW::Mechanize
 )
 
 apt_update
@@ -37,6 +31,10 @@ done
 for CPAN_PACKAGE in ${CPAN_PACKAGES[@]}; do
     cpan_install $CPAN_PACKAGE
 done
+
+while read CPAN_PACKAGE; do
+    cpan_install $CPAN_PACKAGE
+done <./common_cpan_packages
 
 ./install_shellcheck
 ./run_all

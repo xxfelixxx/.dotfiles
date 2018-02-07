@@ -16,6 +16,7 @@ APT_PACKAGES=(
     make
     perl-doc
     rlwrap
+    tmux
 )
 
 CPAN_PACKAGES=(

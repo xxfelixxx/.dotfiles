@@ -20,6 +20,7 @@ YUM_PACKAGES=(
     python34
     python34-setuptools
     rlwrap
+    tmux
 )
 
 CPAN_PACKAGES=(

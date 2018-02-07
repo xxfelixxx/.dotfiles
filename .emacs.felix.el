@@ -241,3 +241,8 @@ one step, else indent 'correctly'"
 (global-set-key (kbd "<C-down>") 'enlarge-window)
 (global-set-key (kbd "<C-left>") 'shrink-window-horizontally)
 (global-set-key (kbd "<C-right>") 'enlarge-window-horizontally)
+
+
+;; https://stackoverflow.com/questions/12292239/insert-the-output-of-shell-command-into-emacs-buffer
+(global-set-key (kbd "C-c C-d") (lambda () (interactive) (insert (shell-command-to-string
+                                                                  "date |tr -d \"\n\""))))

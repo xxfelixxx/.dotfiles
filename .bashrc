@@ -74,6 +74,10 @@ alias fix='stty sane'                          # fix borked display, no clear
 alias e='emacs -nw --no-site-file'
 alias ls='ls --color=auto -B'
 
+# echo "some message" | tb
+alias tb="nc termbin.com 9999"
+alias termbin="nc termbin.com 9999"
+
 BIOS_VERSION=$(sudo dmidecode -s system-version 2>/dev/null)
 VM=""
 if echo "$BIOS_VERSION" | grep -q amazon; then

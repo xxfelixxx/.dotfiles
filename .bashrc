@@ -81,7 +81,9 @@ alias termbin="nc termbin.com 9999"
 BIOS_VERSION=$(sudo dmidecode -s system-version 2>/dev/null)
 VM=""
 if echo "$BIOS_VERSION" | grep -q amazon; then
-    VM="[ec2]"
+    ZONE=$(curl -s  http://169.254.169.254/latest/meta-data/public-hostname \
+           | perl -ne 'm|ec2-\d+-\d+-\d+-\d+\.(.+?).compute|; print $1;')
+    VM="[$ZONE]"
 fi
 
 FANCY_PROMPT="$GREEN\\u$YELLOW@\\h$BLUE$VM:$PURPLE\\w$BLUE$ $CYAN$RESET"

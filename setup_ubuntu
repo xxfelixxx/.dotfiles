@@ -13,6 +13,7 @@ APT_PACKAGES=(
     emacs-nox
     gcc
     libssl-dev
+    netcat
     make
     perl-doc
     rlwrap

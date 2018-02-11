@@ -83,7 +83,6 @@ VM=""
 if echo "$BIOS_VERSION" | grep -q amazon; then
     ZONE=$(curl -s  http://169.254.169.254/latest/meta-data/public-hostname \
            | perl -ne 'm|ec2-\d+-\d+-\d+-\d+\.(.+?).compute|; print $1;')
-    echo "Looking for $ZONE"
     ZONE_NAME=$(/bin/grep $ZONE .aws_regions | perl -ne 's|^\S+\s||g; print')
     VM="[$ZONE_NAME]"
 fi

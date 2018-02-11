@@ -25,6 +25,7 @@ _install() {
 source .colors
 
 DOT_FILES=(
+    .aws_regions
     .bashrc
     .bash_install_functions
     .colors

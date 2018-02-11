@@ -78,6 +78,9 @@ alias ls='ls --color=auto -B'
 alias tb="nc termbin.com 9999"
 alias termbin="nc termbin.com 9999"
 
+alias functions="declare -F | cut -b12-"       # Cutoff the declare -f
+alias show_functions="declare -f"
+
 BIOS_VERSION=$(sudo dmidecode -s system-version 2>/dev/null)
 VM=""
 if echo "$BIOS_VERSION" | grep -q amazon; then

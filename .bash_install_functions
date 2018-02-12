@@ -86,3 +86,12 @@ success() {
 failure() {
     echo "----$RED FAILURE!$GREEN Took $SECONDS seconds $RESET----"
 }
+
+show_function() {
+    if [[ -n "$1" ]]; then
+        declare -f "$1"
+    else
+        header "Chose a function:"
+        declare -F | cut -b12-
+    fi
+}

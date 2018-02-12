@@ -80,6 +80,7 @@ alias termbin="nc termbin.com 9999"
 
 alias functions="declare -F | cut -b12-"       # Cutoff the declare -f
 alias show_functions="declare -f"
+alias variables="declare -p | perl -pe 's|^declare [-\\w]+ ||;'"
 
 BIOS_VERSION=$(sudo dmidecode -s system-version 2>/dev/null)
 VM=""

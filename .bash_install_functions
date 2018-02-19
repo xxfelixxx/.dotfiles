@@ -1,5 +1,5 @@
 DIR=$( dirname "$BASH_SOURCE" )
-source .colors
+source $DIR/.colors
 
 SUDO=''
 if (( EUID != 0 )); then

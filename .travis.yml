@@ -6,7 +6,7 @@ before_install:
   - sudo apt-get install -y colordiff  
   - sudo apt-get install -y libssl-dev
   - cpanm Perl::Tidy
-  - cpanm Perl::Critic
+  - cpanm -v Perl::Critic
   - cpanm Term::ANSIColor
   - cpanm WWW::Mechanize  
 install:

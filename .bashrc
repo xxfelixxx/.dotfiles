@@ -14,11 +14,11 @@ if [ -f ~/.felix/felix.txt ]; then
         cat ~/.felix/felix.txt
 fi
 
-DIR=$( dirname "$BASH_SOURCE" )
+DIR=$( dirname "${BASH_SOURCE[@]}" )
 # some functions
-if [ -f $DIR/.bash_install_functions ]; then
+if [ -f "$DIR/.bash_install_functions" ]; then
     # shellcheck disable=SC1090 # Don't follow
-    . $DIR/.bash_install_functions
+    . "$DIR/.bash_install_functions"
 fi
 
 # PS4 will output linenumbers when running a bash script as
@@ -133,7 +133,5 @@ export LESS_TERMCAP_ue=$'\E[0m'
 export LESS_TERMCAP_us=$'\E[01;32m'
 
 # Fix colors
-source $DIR/.colors
-
-# Add some lines
-# Add another line
+# shellcheck source=/dev/null
+source "$DIR/.colors"

@@ -13,8 +13,9 @@ APT_PACKAGES=(
     emacs-nox
     gcc
     libssl-dev
-    netcat
     make
+    mosh
+    netcat
     perl-doc
     rlwrap
     tmux

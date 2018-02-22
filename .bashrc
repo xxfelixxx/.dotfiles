@@ -14,7 +14,8 @@ if [ -f ~/.felix/felix.txt ]; then
         cat ~/.felix/felix.txt
 fi
 
-DIR=$( dirname "${BASH_SOURCE[@]}" )
+DIR=$( dirname "${BASH_SOURCE[-1]}" )
+
 # some functions
 if [ -f "$DIR/.bash_install_functions" ]; then
     # shellcheck disable=SC1090 # Don't follow

@@ -3,7 +3,7 @@
 
 [![Build Status](https://secure.travis-ci.org/xxfelixxx/.dotfiles.svg)](http://travis-ci.org/xxfelixxx/.dotfiles)
 
-### Version 0.1
+### Version 1.02
 
 
 Features

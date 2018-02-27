@@ -6,6 +6,8 @@ if (( EUID != 0 )); then
     SUDO='sudo'
 fi
 
+ECHO='echo -e'
+
 is_debian() {
     if [[ -f /etc/debian_version ]]; then
         version=$(cat /etc/debian_version)
@@ -28,22 +30,22 @@ is_redhat() {
 
 info() {
     NOTE="$*"
-    echo "-->$GREEN $NOTE $RESET"
+    $ECHO -e "-->$GREEN $NOTE $RESET"
 }
 
 debug() {
     NOTE="$*"
-    echo "---->$PURPLE $NOTE $RESET"
+    $ECHO "---->$PURPLE $NOTE $RESET"
 }
 
 header() {
     NOTE="$*"
-    echo "----$YELLOW $NOTE $RESET----"
+    $ECHO "----$YELLOW $NOTE $RESET----"
 }
 
 warning() {
     NOTE="$*"
-    echo "----$RED $NOTE $RESET----"
+    $ECHO "----$RED $NOTE $RESET----"
 }
 
 apt_update() {
@@ -81,11 +83,11 @@ cpan_install() {
 }
 
 success() {
-    echo "----$YELLOW SUCCESS!$GREEN Took $SECONDS seconds $RESET----"
+    $ECHO "----$YELLOW SUCCESS!$GREEN Took $SECONDS seconds $RESET----"
 }
 
 failure() {
-    echo "----$RED FAILURE!$GREEN Took $SECONDS seconds $RESET----"
+    $ECHO "----$RED FAILURE!$GREEN Took $SECONDS seconds $RESET----"
 }
 
 show_function() {

@@ -7,7 +7,7 @@ IS_FREEBSD=$( uname | grep -i freebsd )
 
 # -z = length 0, -n length non-zero
 # FreeBSD has tput...but the colors don't work...
-if [[ -n "$TPUT" && -z "IS_FREEBSD" ]]; then
+if [[ -n "$TPUT" && -z "$IS_FREEBSD" ]]; then
     RED=$(    tput setaf 1)
     GREEN=$(  tput setaf 2)
     YELLOW=$( tput setaf 3)

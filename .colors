@@ -1,7 +1,13 @@
 #!/bin/bash
 
+TPUT=$( which tput 2>&1 )
+IS_FREEBSD=$( uname | grep -i freebsd )
+
 # Colors
-if which tput >/dev/null 2>&1; then
+
+# -z = length 0, -n length non-zero
+# FreeBSD has tput...but the colors don't work...
+if [[ -n "$TPUT" && -z "IS_FREEBSD" ]]; then
     RED=$(    tput setaf 1)
     GREEN=$(  tput setaf 2)
     YELLOW=$( tput setaf 3)
@@ -10,7 +16,7 @@ if which tput >/dev/null 2>&1; then
     CYAN=$(   tput setaf 6)
     RESET=$(  tput sgr0   )
 else
-    # Cygwin
+    # Cygwin and FreeBSD
     RED='\e[1;31m'
     GREEN='\e[1;32m'
     YELLOW='\e[1;33m'

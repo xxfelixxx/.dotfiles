@@ -15,6 +15,7 @@ if [ -f ~/.felix/felix.txt ]; then
 fi
 
 DIR=$( dirname "${BASH_SOURCE[-1]}" )
+GREP=$( which grep )
 
 # some functions
 if [ -f "$DIR/.bash_install_functions" ]; then
@@ -45,6 +46,25 @@ BLUE="\\[$BLUE_0\\]"
 PURPLE="\\[$PURPLE_0\\]"
 CYAN="\\[$CYAN_0\\]"
 RESET="\\[$RESET_0\\]"
+
+if is_freebsd; then
+    RED_0='\e[1;31m'
+    GREEN_0='\e[1;32m'
+    YELLOW_0='\e[1;33m'
+    BLUE_0='\e[1;34m'
+    PURPLE_0='\e[1;35m'
+    CYAN_0='\e[1;36m'
+    RESET_0='\e[0m'
+
+    RED="\\[$RED_0\\]"
+    GREEN="\\[$GREEN_0\\]"
+    YELLOW="\\[$YELLOW_0\\]"
+    BLUE="\\[$BLUE_0\\]"
+    PURPLE="\\[$PURPLE_0\\]"
+    CYAN="\\[$CYAN_0\\]"
+    RESET="\\[$RESET_0\\]"
+
+fi
 
 CHECK="${GREEN}o"
 CROSS="${RED}x"
@@ -84,12 +104,16 @@ alias functions="declare -F | cut -b12-"       # Cutoff the declare -f
 alias show_functions="declare -f"
 alias variables="declare -p | perl -pe 's|^declare [-\\w]+ ||;'"
 
-BIOS_VERSION=$(sudo dmidecode -s system-version 2>/dev/null)
+if which dmidecode; then
+    BIOS_VERSION=$(sudo dmidecode -s system-version 2>/dev/null)
+else
+    BIOS_VERSION='amazon' # Force a check...
+fi
 VM=""
-if echo "$BIOS_VERSION" | grep -q amazon; then
+if echo "$BIOS_VERSION" | "$GREP" -q amazon; then
     ZONE=$(curl -s  http://169.254.169.254/latest/meta-data/public-hostname \
            | perl -ne 'm|ec2-\d+-\d+-\d+-\d+\.(.+?).compute|; print $1;')
-    ZONE_NAME=$(/bin/grep "$ZONE" ~/.aws_regions | perl -ne 's|^\S+\s||g; print')
+    ZONE_NAME=$("$GREP" "$ZONE" ~/.aws_regions | perl -ne 's|^\S+\s||g; print')
     VM="[$ZONE_NAME]"
 fi
 

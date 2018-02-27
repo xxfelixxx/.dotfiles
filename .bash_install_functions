@@ -8,6 +8,16 @@ fi
 
 ECHO='echo -e'
 
+is_freebsd() {
+    if [[ "uname | grep -i freebsd" ]]; then
+        version=$(uname -a)
+        header "$version"
+        true
+    else
+        false
+    fi
+}
+
 is_debian() {
     if [[ -f /etc/debian_version ]]; then
         version=$(cat /etc/debian_version)

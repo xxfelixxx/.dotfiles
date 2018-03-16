@@ -1,5 +1,7 @@
-DIR=$( dirname "$BASH_SOURCE" )
-source $DIR/.colors
+DIR=$( dirname "${BASH_SOURCE[@]}" )
+# shellcheck disable=SC1090 # Don't follow
+# shellcheck disable=SC1091 # Don't follow
+source "$DIR/.colors"
 
 SUDO=''
 if (( EUID != 0 )); then

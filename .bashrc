@@ -14,14 +14,13 @@ if [ -f ~/.felix/felix.txt ]; then
         cat ~/.felix/felix.txt
 fi
 
-DIR=$( dirname "${BASH_SOURCE[-1]}" )
 unalias grep
 GREP=$( command -v grep )
 
 # some functions
-if [ -f "$DIR/.bash_install_functions" ]; then
+if [ -f "$HOME/.bash_install_functions" ]; then
     # shellcheck disable=SC1090 # Don't follow
-    . "$DIR/.bash_install_functions"
+    . "$HOME/.bash_install_functions"
 fi
 
 # PS4 will output linenumbers when running a bash script as
@@ -160,6 +159,6 @@ export LESS_TERMCAP_us=$'\E[01;32m'
 
 # Fix colors
 # shellcheck source=/dev/null
-if [ -f "$DIR/.colors" ]; then
-    source "$DIR/.colors"
+if [ -f "$HOME/.colors" ]; then
+    source "$HOME/.colors"
 fi

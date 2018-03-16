@@ -40,11 +40,19 @@ TEST_FAILURES=0
 
 # Actual Tests
 _bash_test $HOME/.bashrc
+_bash_test $HOME/.bash_install_functions
 _bash_test $HOME/.colors
 _bash_test $HOME/.inputrc
 _test_command "emacs --script $HOME/.emacs"
 _test_command "emacs --script $HOME/.emacs.felix.el"
 _test_command "git config -l --file=$HOME/.gitconfig"
 
+if [[ "$TEST_FAILURES" -gt "0" ]]; then
+    echo -e "==> ${RED}Failed $TEST_FAILURES tests!$RESET"
+    _header
+else
+    echo -e "${GREEN}==> SUCCESS! $RESET"
+    _header
+fi
 exit $TEST_FAILURES
 

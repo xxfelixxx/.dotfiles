@@ -105,7 +105,7 @@ alias functions="declare -F | cut -b12-"       # Cutoff the declare -f
 alias show_functions="declare -f"
 alias variables="declare -p | perl -pe 's|^declare [-\\w]+ ||;'"
 
-if command -v dmidecode 2>&1 >/dev/null; then
+if command -v dmidecode >/dev/null 2>&1; then
     BIOS_VERSION=$(sudo dmidecode -s system-version 2>/dev/null)
 else
     BIOS_VERSION='amazon' # Force a check...
@@ -160,4 +160,6 @@ export LESS_TERMCAP_us=$'\E[01;32m'
 
 # Fix colors
 # shellcheck source=/dev/null
-source "$DIR/.colors"
+if [ -f "$DIR/.colors" ]; then
+    source "$DIR/.colors"
+fi

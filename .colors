@@ -1,6 +1,6 @@
 #!/bin/bash
 
-TPUT=$( which tput 2>&1 )
+TPUT=$( command -v tput )
 IS_FREEBSD=$( uname | grep -i freebsd )
 
 # Colors

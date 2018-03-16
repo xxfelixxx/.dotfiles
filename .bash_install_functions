@@ -9,7 +9,7 @@ fi
 ECHO='echo -e'
 
 is_freebsd() {
-    if [[ "uname | grep -i freebsd" ]]; then
+    if uname | grep -i freebsd; then
         version=$(uname -a)
         header "$version"
         true

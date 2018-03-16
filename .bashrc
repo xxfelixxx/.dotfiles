@@ -15,6 +15,7 @@ if [ -f ~/.felix/felix.txt ]; then
 fi
 
 DIR=$( dirname "${BASH_SOURCE[-1]}" )
+unalias grep
 GREP=$( command -v grep )
 
 # some functions
@@ -104,7 +105,7 @@ alias functions="declare -F | cut -b12-"       # Cutoff the declare -f
 alias show_functions="declare -f"
 alias variables="declare -p | perl -pe 's|^declare [-\\w]+ ||;'"
 
-if command -v dmidecode; then
+if command -v dmidecode 2>&1 >/dev/null; then
     BIOS_VERSION=$(sudo dmidecode -s system-version 2>/dev/null)
 else
     BIOS_VERSION='amazon' # Force a check...

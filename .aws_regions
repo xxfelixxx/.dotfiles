@@ -1,13 +1,17 @@
-# List of the 15 AWS Regions (as of Feb 2018)
+# List of the 18 AWS Regions (as of Mar 2018)
 ap-northeast-1 tokyo
 ap-northeast-2 seoul
+ap-northeast-3 osaka
 ap-south-1 mumbai
 ap-southeast-1 singapore
 ap-southeast-2 sydney
 ca-central-1 canada
+cn-north-1 beijing
+cn-northwest-1 ningxia
 eu-central-1 frankfurt
 eu-west-1 ireland
 eu-west-2 london
+eu-west-3 paris
 sa-east-1 são paulo
 us-east-1 virginia
 us-east-2 ohio

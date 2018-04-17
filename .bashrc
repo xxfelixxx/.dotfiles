@@ -14,7 +14,7 @@ if [ -f ~/.felix/felix.txt ]; then
         cat ~/.felix/felix.txt
 fi
 
-unalias grep
+unalias grep 2>/dev/null
 GREP=$( command -v grep )
 
 # some functions

@@ -24,7 +24,7 @@ Setup for Ubuntu
 Setup for Redhat
 -----------------
 
-    sudo yum install git
+    sudo yum install -y git
     git clone https://github.com/xxfelixxx/.dotfiles
     cd .dotfiles
     ./setup_redhat

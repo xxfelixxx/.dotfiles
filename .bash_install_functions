@@ -93,6 +93,12 @@ cpan_install() {
     $SUDO PERL_MM_USE_DEFAULT=1 cpan -i "$PACKAGE"
 }
 
+cpm_install_cpanfile() {
+    header "Installing packages from cpanfile"
+    cat cpanfile
+    $SUDO cpm install
+}
+
 success() {
     $ECHO "----$YELLOW SUCCESS!$GREEN Took $SECONDS seconds $RESET----"
 }

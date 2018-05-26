@@ -94,7 +94,7 @@ cpan_install() {
 }
 
 cpm_install_cpanfile() {
-    header "Installing packages from cpanfile"
+    header "Installing packages from cpanfile using cpm"
     cat cpanfile
     $SUDO cpm install
 }

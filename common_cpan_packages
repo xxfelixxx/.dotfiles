@@ -1,8 +1,0 @@
-CPAN
-App::ShellCheckWiki
-LWP::Protocol::https
-Perl::Critic
-Perl::Tidy
-Task::CPAN::Reporter
-Term::ANSIColor
-WWW::Mechanize

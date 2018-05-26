@@ -1,8 +1,13 @@
-requires 'CPAN';
 requires 'App::ShellCheckWiki';
+requires 'CPAN';
+requires 'Env';
+requires 'Fatal';
+requires 'File::HomeDir';
+requires 'File::Which';
 requires 'LWP::Protocol::https';
 requires 'Perl::Critic';
 requires 'Perl::Tidy';
+requires 'Pod::Spell';
 requires 'Task::CPAN::Reporter';
 requires 'Term::ANSIColor';
 requires 'WWW::Mechanize';

@@ -26,11 +26,7 @@ YUM_PACKAGES=(
 )
 
 CPAN_PACKAGES=(
-    Env
-    Fatal
-    File::HomeDir
-    File::Which
-    Pod::Spell
+    App::cpm
 )
 
 yum_install_epel_release
@@ -44,9 +40,7 @@ for CPAN_PACKAGE in ${CPAN_PACKAGES[@]}; do
     cpan_install $CPAN_PACKAGE
 done
 
-while read CPAN_PACKAGE; do
-    cpan_install $CPAN_PACKAGE
-done <./common_cpan_packages
+cpm_install_cpanfile
 
 ./install_shellcheck
 ./run_all

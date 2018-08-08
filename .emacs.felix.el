@@ -163,6 +163,15 @@
 (eval-after-load "sql"
   '(load-library "sql-indent"))
 
+(defun send-sql ()
+  "Paste highlighed block to running sql session"
+  (interactive)
+  (copy-region-as-kill (point) (mark))
+  (switch-to-buffer "*SQL*")
+  (yank)
+  (comint-send-input)
+  (switch-to-prev-buffer))
+
 ; auto completion
 ;;;;;;;;;;;;;;;;;
 (require 'dabbrev)
